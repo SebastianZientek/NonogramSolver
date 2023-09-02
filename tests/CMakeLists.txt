@@ -1,0 +1,4 @@
+set(UNIT_TESTS
+    ${CMAKE_CURRENT_SOURCE_DIR}/TestGenerator.cpp
+    PARENT_SCOPE
+)
