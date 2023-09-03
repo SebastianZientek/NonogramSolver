@@ -11,8 +11,8 @@ struct ColumnIterator
     using pointer = T *;
     using reference = T &;
 
-    ColumnIterator(IT it, size_t width)
-        : m_it(it)
+    ColumnIterator(IT itStart, size_t width)
+        : m_it(itStart)
         , m_width(width)
     {
     }

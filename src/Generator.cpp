@@ -18,6 +18,21 @@ Generator::Generator(std::vector<SideNumberType> &&sideNumbers, size_t seqSize)
     next();
 }
 
+Generator::Generator(std::vector<SideNumberType> &sideNumbers, size_t seqSize)
+    : m_sideNumbers(sideNumbers)
+{
+    size_t blocksWithSpaces
+        = std::accumulate(sideNumbers.begin(), sideNumbers.end(), sideNumbers.size() - 1);
+    size_t spacesAfterBlocks = seqSize - blocksWithSpaces;
+    size_t numbers = sideNumbers.size() + spacesAfterBlocks;
+    size_t length = sideNumbers.size();
+
+    m_seq.resize(seqSize);
+    m_combination.setup(numbers, length);
+
+    next();
+}
+
 bool Generator::next()
 {
     auto comb = m_combination.seq();
@@ -42,4 +57,12 @@ bool Generator::next()
 std::vector<CellType> &Generator::getSeq()
 {
     return m_seq;
+}
+
+void Generator::init(size_t seqSize, size_t numbers, size_t length)
+{
+    m_seq.resize(seqSize);
+    m_combination.setup(numbers, length);
+
+    next();
 }

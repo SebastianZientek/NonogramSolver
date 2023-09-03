@@ -69,11 +69,11 @@ int main(int argc, char **argv)
 
     std::for_each(sideRows.begin(), sideRows.end(),
                   [&rows, &sideCols](auto &sideRow)
-                  { rows.emplace_back(std::move(sideRow), sideCols.size()); });
+                  { rows.emplace_back(sideRow, sideCols.size()); });
 
     std::for_each(sideCols.begin(), sideCols.end(),
                   [&cols, &sideRows](auto &sideCol)
-                  { cols.emplace_back(std::move(sideCol), sideRows.size()); });
+                  { cols.emplace_back(sideCol, sideRows.size()); });
 
     std::vector<CellType> data(rows.size() * cols.size(), E);
 
