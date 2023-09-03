@@ -9,8 +9,8 @@ add_library(src_objs OBJECT ${SRCS})
 add_executable(${CMAKE_PROJECT_NAME} src/main.cpp)
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE src)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE src_objs)
-target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC -fsanitize=address -O0 -g)
-target_link_options(${CMAKE_PROJECT_NAME} PRIVATE -fsanitize=address)
+# target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC -fsanitize=address -O0 -g)
+# target_link_options(${CMAKE_PROJECT_NAME} PRIVATE -fsanitize=address)
 
 # unit tests
 find_package(GTest REQUIRED)
