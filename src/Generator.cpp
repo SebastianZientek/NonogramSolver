@@ -3,7 +3,7 @@
 
 #include <numeric>
 
-Generator::Generator(std::vector<SideNumberType> sideNumbers, size_t seqSize)
+Generator::Generator(std::vector<SideNumberType> &&sideNumbers, size_t seqSize)
     : m_sideNumbers(sideNumbers)
 {
     size_t blocksWithSpaces

@@ -8,7 +8,7 @@
 class Generator
 {
 public:
-    Generator(std::vector<SideNumberType> sideNumbers, size_t seqSize);
+    Generator(std::vector<SideNumberType> &&sideNumbers, size_t seqSize);
 
     bool next();
     std::vector<CellType> &getSeq();

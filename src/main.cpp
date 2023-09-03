@@ -8,6 +8,7 @@
 
 #include "Combination.hpp"
 #include "Generator.hpp"
+#include "Line.hpp"
 #include "Types.hpp"
 
 int main(int argc, char **argv)
@@ -20,16 +21,28 @@ int main(int argc, char **argv)
         {5}, {2, 3}, {1, 3}, {2, 3}, {2, 3}, {2, 3}, {2, 3}, {1, 3}, {2, 3}, {5},
     };
 
-    Generator gen({3, 2, 6}, 15);
+    Line line({4, 3}, 10);
 
-    while (gen.next())
+    std::vector<CellType> painted(15);
+    line.paintKnownFields(painted.begin());
+
+    for (const auto &seq : painted)
     {
-        for (auto a : gen.getSeq())
+        switch (seq)
         {
-            std::cout << a << ' ';
+        case E:
+            std::cout << '_';
+            break;
+        case B:
+            std::cout << 'X';
+            break;
+        case W:
+            std::cout << ' ';
+            break;
         }
-        std::cout << '\n';
+        std::cout << ' ';
     }
+    std::cout << '\n';
 
     return 0;
 }
