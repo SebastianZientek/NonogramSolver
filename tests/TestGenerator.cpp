@@ -81,3 +81,29 @@ TEST(Generator, NoFields)
 
     EXPECT_EQ(gen.next(), false);
 }
+
+TEST(Generator, LongerFieldsInitUsingReferencedData)
+{
+    std::vector<SideNumberType> data = {2, 2};
+    Generator gen(data, 7);
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(B, B, W, B, B, W, W));
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(B, B, W, W, B, B, W));
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(B, B, W, W, W, B, B));
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(W, B, B, W, B, B, W));
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(W, B, B, W, W, B, B));
+
+    EXPECT_EQ(gen.next(), true);
+    ASSERT_THAT(gen.getSeq(), ElementsAre(W, W, B, B, W, B, B));
+
+    EXPECT_EQ(gen.next(), false);
+}

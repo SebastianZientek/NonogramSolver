@@ -34,3 +34,13 @@ TEST(Line, RemovingImpossibleSequences)
     ASSERT_THAT(line.getSeqs()[0], ElementsAre(W, B, B, B, W, B, B, B, W));
     ASSERT_THAT(line.getSeqs()[1], ElementsAre(W, B, B, B, W, W, B, B, B));
 }
+
+TEST(Line, PaintingKnownFieldsWithWhiteBlocksAndDataAsRef)
+{
+    std::vector<SideNumberType> sideNumbers = {2, 4, 2};
+    Line line(sideNumbers, 10);
+    std::vector<CellType> painted(10);
+    line.paintKnownFields(painted.begin());
+
+    ASSERT_THAT(painted, ElementsAre(B, B, W, B, B, B, B, W, B, B));
+}
