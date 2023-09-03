@@ -45,16 +45,7 @@ int main(int argc, char **argv)
                                                       {4, 2, 1, 1},
                                                       {10, 1}};
 
-    size_t width = sideCols.size();
-    size_t height = sideRows.size();
-    Nonogram nonogram(width, height);
-
-    std::for_each(sideRows.begin(), sideRows.end(),
-                  [&nonogram](auto &sideRow) { nonogram.addRow(sideRow); });
-
-    std::for_each(sideCols.begin(), sideCols.end(),
-                  [&nonogram](auto &sideCol) { nonogram.addCol(sideCol); });
-
+    Nonogram nonogram(sideRows, sideCols);
     nonogram.solve();
     nonogram.print();
 

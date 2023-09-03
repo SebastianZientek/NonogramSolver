@@ -10,21 +10,7 @@
 class Line
 {
 public:
-    Line(std::vector<SideNumberType> &&sideNumbers, size_t length)
-        : m_knownFields(length)
-        , m_length(length)
-    {
-        Generator gen(std::move(sideNumbers), length);
-        generateSeqs(gen);
-    }
-
-    Line(std::vector<SideNumberType> &sideNumbers, size_t length)
-        : m_knownFields(length)
-        , m_length(length)
-    {
-        Generator gen(sideNumbers, length);
-        generateSeqs(gen);
-    }
+    Line(const std::vector<SideNumberType> &sideNumbers, size_t length);
 
     void paintKnownFields(auto begin)
     {
@@ -63,5 +49,4 @@ private:
     size_t m_length;
 
     void prepareKnownFields();
-    void generateSeqs(Generator &gen);
 };

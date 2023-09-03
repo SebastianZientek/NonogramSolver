@@ -67,3 +67,8 @@ void Nonogram::print()
         std::cout << '\n';
     }
 }
+
+std::vector<CellType> &Nonogram::getSeq()
+{
+    return m_data;
+}
