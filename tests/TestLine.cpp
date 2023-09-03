@@ -23,3 +23,14 @@ TEST(Line, PaintingKnownFieldsWithWhiteBlocks)
 
     ASSERT_THAT(painted, ElementsAre(B, B, W, B, B, B, B, W, B, B));
 }
+
+TEST(Line, RemovingImpossibleSequences)
+{
+    Line line({3, 3}, 9);
+
+    std::vector<CellType> pattern = {E, E, B, B, W, E, E, E, E};
+    line.removeImpossibleSequences(pattern.begin());
+
+    ASSERT_THAT(line.getSeqs()[0], ElementsAre(W, B, B, B, W, B, B, B, W));
+    ASSERT_THAT(line.getSeqs()[1], ElementsAre(W, B, B, B, W, W, B, B, B));
+}
