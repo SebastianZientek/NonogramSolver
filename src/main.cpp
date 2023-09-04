@@ -1,52 +1,64 @@
 #include <algorithm>
 #include <array>
 #include <bitset>
+#include <fstream>
 #include <initializer_list>
 #include <iostream>
+#include <istream>
 #include <iterator>
 #include <span>
 #include <vector>
 
 #include "ColumnIterator.hpp"
 #include "Combination.hpp"
+#include "FileParser.hpp"
 #include "Generator.hpp"
 #include "Line.hpp"
 #include "Nonogram.hpp"
 #include "Types.hpp"
-#include "FileParser.hpp"
 
 int main(int argc, char **argv)
 {
-    // std::vector<std::vector<SideNumberType>> sideRows{
-    //     {3, 3}, {2, 4, 2}, {1, 2, 1}, {1, 1}, {2, 2}, {3, 3}, {3, 3}, {6}, {4}, {2},
-    // };
+    FileParser parser;
+    if (argc != 2)
+    {
+        std::cout << "No input file provided\n"
+                     "reading from stdin\n"
+                     "type data and Ctrl+D at the end\n"
+                     "Data format:\n"
+                     "<rows line by line>\n"
+                     "-\n"
+                     "<col line by line>\n"
+                     "Example:\n"
+                     "1, 1, 1\n"
+                     "3, 4\n"
+                     "-\n"
+                     "3, 5\n";
 
-    // std::vector<std::vector<SideNumberType>> sideCols{
-    //     {5}, {2, 3}, {1, 3}, {2, 3}, {2, 3}, {2, 3}, {2, 3}, {1, 3}, {2, 3}, {5},
-    // };
+        if (parser.parse(std::cin) == false)
+        {
+            std::cerr << "Corrupted data\n";
+            return -1;
+        }
+    }
+    else
+    {
+        std::ifstream file(argv[1]);
 
-    std::vector<std::vector<SideNumberType>> sideRows{
-        {5},          {3, 3},          {2, 5},    {1, 4, 2}, {5, 2},    {9, 1},    {3, 4},
-        {1, 2, 4, 1}, {4, 5, 2},       {3, 4, 2}, {2, 2, 1}, {5, 3, 1}, {3, 4, 3}, {6, 2},
-        {4, 4, 1},    {1, 1, 2, 1, 1}, {3, 1, 1}, {2, 8},    {2},       {10}};
+        if (!file)
+        {
+            std::cerr << "Can't open file\n";
+            return -1;
+        }
 
-    std::vector<std::vector<SideNumberType>> sideCols{{2, 3},
-                                                      {2, 4},
-                                                      {1, 10},
-                                                      {2, 5, 6},
-                                                      {1, 3, 4, 3},
-                                                      {1, 3, 3, 7},
-                                                      {1, 4, 3, 1, 1},
-                                                      {6, 2, 2, 3, 1},
-                                                      {3, 1, 3, 1, 2, 1, 1},
-                                                      {2, 1, 2, 1, 1, 1, 1},
-                                                      {2, 4, 2, 1, 1, 1},
-                                                      {2, 2, 1, 2, 1, 1},
-                                                      {3, 2, 1, 1},
-                                                      {4, 2, 1, 1},
-                                                      {10, 1}};
+        if (parser.parse(file) == false)
+        {
+            std::cerr << "Corrupted data\n";
+            return -1;
+        }
+    }
 
-    Nonogram nonogram(sideRows, sideCols);
+    Nonogram nonogram(parser.getSideRows(), parser.getSideCols());
     nonogram.solve();
     nonogram.print(std::cout);
 

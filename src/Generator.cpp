@@ -1,12 +1,6 @@
 
 #include "Generator.hpp"
 
-// Generator::Generator(std::vector<SideNumberType> &&sideNumbers, size_t seqSize)
-//     : m_sideNumbers(sideNumbers)
-// {
-//     init(std::move(sideNumbers), seqSize);
-// }
-
 Generator::Generator(const std::vector<SideNumberType> &sideNumbers, size_t seqSize)
     : m_sideNumbers(sideNumbers)
 {
