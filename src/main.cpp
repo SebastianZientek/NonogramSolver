@@ -13,6 +13,7 @@
 #include "Line.hpp"
 #include "Nonogram.hpp"
 #include "Types.hpp"
+#include "FileParser.hpp"
 
 int main(int argc, char **argv)
 {
@@ -47,7 +48,7 @@ int main(int argc, char **argv)
 
     Nonogram nonogram(sideRows, sideCols);
     nonogram.solve();
-    nonogram.print();
+    nonogram.print(std::cout);
 
     return 0;
 }

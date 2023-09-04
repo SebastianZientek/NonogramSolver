@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <vector>
 
 #include "ColumnIterator.hpp"
@@ -22,8 +23,7 @@ public:
     }
 
     void solve();
-    void print();
-    std::vector<CellType> &getSeq();
+    void print(std::ostream &stream);
 
 private:
     std::vector<Line> m_rows;

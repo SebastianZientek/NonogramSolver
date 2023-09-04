@@ -1,6 +1,8 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <sstream>
+
 #include "Nonogram.hpp"
 #include "Types.hpp"
 
@@ -10,11 +12,17 @@ TEST(Nonogram, simpleNonogram)
 {
     std::vector<std::vector<SideNumberType>> rows = {{3}, {1, 1, 1}, {3}, {1, 1}, {1, 1}};
     std::vector<std::vector<SideNumberType>> cols = {{1, 1}, {1, 2}, {3}, {1, 2}, {1, 1}};
+    std::stringstream outputStream;
+    std::string expectedOutput
+        = "  X X X   \n"
+          "X   X   X \n"
+          "  X X X   \n"
+          "  X   X   \n"
+          "X       X \n";
 
     Nonogram nonogram(rows, cols);
     nonogram.solve();
+    nonogram.print(outputStream);
 
-    auto seq = nonogram.getSeq();
-    ASSERT_THAT(seq, ElementsAre(W, B, B, B, W, B, W, B, W, B, W, B, B, B, W, W, B, W, B, W, B, W,
-                                 W, W, B));
+    EXPECT_EQ(outputStream.str(), expectedOutput);
 }

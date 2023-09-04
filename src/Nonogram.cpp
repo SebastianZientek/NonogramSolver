@@ -43,32 +43,29 @@ void Nonogram::solve()
     }
 }
 
-void Nonogram::print()
+void Nonogram::print(std::ostream &stream)
 {
+    auto toChar = [](const auto &cell)
+    {
+        switch (cell)
+        {
+        case E:
+            return '_';
+        case B:
+            return 'X';
+        case W:
+            return ' ';
+        }
+        return '?';
+    };
+
     for (size_t y = 0; y < m_rows.size(); ++y)
     {
         for (size_t x = 0; x < m_width; ++x)
         {
             auto cell = m_data[x + y * m_width];
-            switch (cell)
-            {
-            case E:
-                std::cout << '_';
-                break;
-            case B:
-                std::cout << 'X';
-                break;
-            case W:
-                std::cout << ' ';
-                break;
-            }
-            std::cout << ' ';
+            stream << toChar(cell) << ' ';
         }
-        std::cout << '\n';
+        stream << '\n';
     }
-}
-
-std::vector<CellType> &Nonogram::getSeq()
-{
-    return m_data;
 }
