@@ -41,7 +41,7 @@ bool Generator::next()
     return std::exchange(m_nextAvailable, m_combination.next());
 }
 
-std::vector<CellType> &Generator::getSeq()
+CellsVec &Generator::getSeq()
 {
     return m_seq;
 }

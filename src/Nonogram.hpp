@@ -28,7 +28,7 @@ public:
 private:
     std::vector<Line> m_rows;
     std::vector<Line> m_cols;
-    std::vector<CellType> m_data;
+    CellsVec m_data;
 
     size_t m_width;
     size_t m_height;

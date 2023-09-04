@@ -29,7 +29,7 @@ public:
 
     void removeImpossibleSequences(auto patternIt)
     {
-        std::vector<CellType> buffer(m_length);
+        CellsVec buffer(m_length);
         auto predicate = [&buffer, patternIt](auto seq)
         {
             std::transform(seq.begin(), seq.end(), patternIt, buffer.begin(),
@@ -41,11 +41,11 @@ public:
         std::erase_if(m_possibleSeqs, predicate);
     }
 
-    std::vector<std::vector<CellType>> &getSeqs() noexcept;
+    std::vector<CellsVec> &getSeqs() noexcept;
 
 private:
-    std::vector<std::vector<CellType>> m_possibleSeqs;
-    std::vector<CellType> m_knownFields;  // Fields that for sure should be white/black
+    std::vector<CellsVec> m_possibleSeqs;
+    CellsVec m_knownFields;  // Fields that for sure should be white/black
     size_t m_length;
 
     void prepareKnownFields();

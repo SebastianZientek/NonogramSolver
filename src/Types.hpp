@@ -4,6 +4,7 @@
 #include <vector>
 
 using CellType = uint8_t;
+using CellsVec = std::vector<CellType>;
 using SideNumberType = size_t;
 using SideNumbersVec = std::vector<SideNumberType>;
 

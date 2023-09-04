@@ -11,7 +11,7 @@ Line::Line(const std::vector<SideNumberType> &sideNumbers, size_t length)
     }
 }
 
-std::vector<std::vector<CellType>> &Line::getSeqs() noexcept
+std::vector<CellsVec> &Line::getSeqs() noexcept
 {
     return m_possibleSeqs;
 }
