@@ -46,7 +46,11 @@ int main(int argc, char **argv)
     }
 
     Nonogram nonogram(parser.getSideRows(), parser.getSideCols());
-    nonogram.solve();
+    if(nonogram.solve() == false)
+    {
+        std::cerr << "No solution found. Check if data is correct.\n";
+    }
+
     nonogram.print(std::cout);
 
     return 0;

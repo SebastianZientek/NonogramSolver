@@ -8,7 +8,7 @@
 
 using ::testing::ElementsAre;
 
-TEST(Nonogram, simpleNonogram)
+TEST(Nonogram, SimpleNonogram)
 {
     std::vector<std::vector<SideNumberType>> rows = {{3}, {1, 1, 1}, {3}, {1, 1}, {1, 1}};
     std::vector<std::vector<SideNumberType>> cols = {{1, 1}, {1, 2}, {3}, {1, 2}, {1, 1}};
@@ -25,4 +25,13 @@ TEST(Nonogram, simpleNonogram)
     nonogram.print(outputStream);
 
     EXPECT_EQ(outputStream.str(), expectedOutput);
+}
+
+TEST(Nonogram, ImpossibleToSolve)
+{
+    std::vector<std::vector<SideNumberType>> rows = {{3}, {1, 1, 1}, {3}, {1, 1}, {1, 1}};
+    std::vector<std::vector<SideNumberType>> cols = {{1, 1}, {2, 2}, {3}, {1, 2}, {1, 1}};
+
+    Nonogram nonogram(rows, cols);
+    EXPECT_FALSE(nonogram.solve());
 }

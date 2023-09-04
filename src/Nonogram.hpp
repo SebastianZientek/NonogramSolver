@@ -22,7 +22,7 @@ public:
                       [this](const auto &col) { m_cols.emplace_back(col, m_height); });
     }
 
-    void solve();
+    bool solve();
     void print(std::ostream &stream);
 
 private:
