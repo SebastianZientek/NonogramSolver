@@ -1,21 +1,8 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
 #include <fstream>
-#include <initializer_list>
 #include <iostream>
-#include <istream>
-#include <iterator>
-#include <span>
-#include <vector>
 
-#include "ColumnIterator.hpp"
-#include "Combination.hpp"
 #include "FileParser.hpp"
-#include "Generator.hpp"
-#include "Line.hpp"
 #include "Nonogram.hpp"
-#include "Types.hpp"
 
 int main(int argc, char **argv)
 {

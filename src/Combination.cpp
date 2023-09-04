@@ -1,5 +1,8 @@
 #include "Combination.hpp"
 
+#include <algorithm>
+#include <utility>
+
 void Combination::setup(size_t numbers, size_t length)
 {
     m_permutation.resize(numbers, 0);

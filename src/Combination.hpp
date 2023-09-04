@@ -1,9 +1,6 @@
 #pragma once
 
-#include <algorithm>
 #include <cstdint>
-#include <iostream>
-#include <utility>
 #include <vector>
 
 class Combination

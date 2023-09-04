@@ -1,6 +1,10 @@
 
 #include "Generator.hpp"
 
+#include <cassert>
+#include <numeric>
+#include <utility>
+
 Generator::Generator(const std::vector<SideNumberType> &sideNumbers, size_t seqSize)
     : m_sideNumbers(sideNumbers)
 {
