@@ -15,10 +15,10 @@
     <col line by line>
 
     Example:
-    1, 1, 1
-    3, 4
+    1 1 1
+    3 4
     -
-    3, 5
+    3 5
 */
 
 class FileParser

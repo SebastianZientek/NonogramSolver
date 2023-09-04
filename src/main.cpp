@@ -17,10 +17,10 @@ int main(int argc, char **argv)
                      "-\n"
                      "<col line by line>\n"
                      "Example:\n"
-                     "1, 1, 1\n"
-                     "3, 4\n"
+                     "1 1 1\n"
+                     "3 4\n"
                      "-\n"
-                     "3, 5\n";
+                     "3 5\n";
 
         if (parser.parse(std::cin) == false)
         {
